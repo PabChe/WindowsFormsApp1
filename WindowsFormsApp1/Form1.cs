@@ -284,6 +284,17 @@ namespace WindowsFormsApp1
             pictureBox1.DrawToBitmap(bmp, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
             pictureBox2.DrawToBitmap(bmp, new Rectangle(pictureBox1.Width, 0, pictureBox2.Width, pictureBox2.Height));
             bmp.Save("Model" + clickCount, System.Drawing.Imaging.ImageFormat.Jpeg);
+            
+            DialogResult result = MessageBox.Show(
+                "We have started working on your order, do you want to share the image with your friends(the image will be copied to the clipboard)?",
+                "Order is accepted",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly);
+
+            if (result == DialogResult.Yes)
+                Clipboard.SetImage(bmp);
         }
 
         private void button4_Click(object sender, EventArgs e)
